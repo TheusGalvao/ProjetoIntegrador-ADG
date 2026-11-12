@@ -1,0 +1,409 @@
+@import url('https://fonts.googleapis.com/css2?family=Gurajada&family=Montserrat:wght@100..900&display=swap');
+
+:root {
+    --azul-escuro: #020029;
+    --azul-claro: #4D47BB;
+    --azul-botao: #635DDE;
+    --amarelo: #FFEC73;
+    --amarelo-claro: #E2E0FF;
+    --branco: #FFFFFF;
+    --cinza-escuro: #2B2B2B;
+    --borda-card: #8D8D8D;
+    --cinza-footer: #D9D9D9;
+    --cinza-footer-box: #565656;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--branco);
+    color: var(--branco);
+    overflow-x: hidden;
+}
+
+/* ================= HEADER ================= */
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 97px;
+    background: rgba(255, 250, 219, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px 0 26px;
+    z-index: 10;
+}
+
+header .menu-icon {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+header .header-logo {
+    width: 90px;
+    height: 43px;
+    background-color: #0F0F0F;
+}
+
+/* ================= HERO SECTION ================= */
+.hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 720px;
+    padding-top: 137px;
+    background: linear-gradient(to bottom, var(--branco) 0%, var(--amarelo) 100%);
+    z-index: 1;
+}
+
+.hero-inner {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 3;
+}
+
+.hero-section h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 70px;
+    line-height: 62px;
+    margin-left: 95px;
+    background: linear-gradient(193deg, var(--azul-claro) 0%, var(--azul-escuro) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.hero-section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 37px;
+    color: var(--cinza-escuro);
+    margin-top: 38px;
+    margin-left: 470px;
+}
+
+.hero-section h3 {
+    font-family: 'Gurajada', serif;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 1;
+    color: var(--cinza-escuro);
+    margin-top: 6px;
+    margin-left: 787px;
+}
+
+.hero-section button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 349px;
+    height: 66px;
+    margin: 28px auto 0 auto;
+    border: none;
+    border-radius: 33px;
+    background: linear-gradient(90deg, var(--azul-botao) 0%, var(--azul-escuro) 100%);
+    color: var(--branco);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.hero-section button:hover {
+    transform: scale(1.03);
+    opacity: 0.95;
+}
+
+.hero-img-ldr {
+    position: absolute;
+    left: -179px;
+    top: 419px;
+    width: 549px;
+    height: 466px;
+    object-fit: contain;
+    transform: rotate(55.54deg);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.hero-img-arduino {
+    position: absolute;
+    right: -236px;
+    top: 461px;
+    width: 662px;
+    height: 586px;
+    object-fit: contain;
+    transform: rotate(16.79deg);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* ================= CONTENT SECTION ================= */
+.content-section {
+    position: relative;
+    width: 100%;
+    padding-top: 346px;
+    padding-left: 8px;
+    padding-right: 8px;
+    background: linear-gradient(
+        to bottom,
+        var(--amarelo) 0%,
+        var(--amarelo-claro) 86%,
+        #726F94 100%
+    );
+}
+
+.content-header-wrap {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.content-section .section-main-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 70px;
+    line-height: 85px;
+    color: var(--azul-escuro);
+    margin-left: 87px;
+    margin-bottom: 55px;
+    position: relative;
+    z-index: 3;
+}
+
+.content-container {
+    width: 100%;
+    max-width: 1263px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 170px;
+    background-color: var(--cinza-escuro);
+    border-radius: 30px;
+    padding: 188px 245px 198px 245px;
+    position: relative;
+    z-index: 3;
+}
+
+.content-container h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 70px;
+    line-height: 85px;
+    color: var(--branco);
+    margin-bottom: 45px;
+}
+
+.content-container p {
+    color: var(--branco);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 49px;
+    text-align: left;
+}
+
+/* Simulation Block */
+.simulation img {
+    display: block;
+    width: 729px;
+    max-width: 100%;
+    height: 594px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 1px solid var(--borda-card);
+    margin: 63px auto 43px auto;
+}
+
+.simulation button,
+.documentation button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 664px;
+    max-width: 100%;
+    height: 83px;
+    margin: 0 auto;
+    background: transparent;
+    border: 2px solid var(--azul-botao);
+    border-radius: 41.5px;
+    color: var(--branco);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 50px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.simulation button:hover,
+.documentation button:hover {
+    background-color: rgba(99, 93, 222, 0.15);
+    transform: scale(1.02);
+}
+
+/* Components List */
+.components ul {
+    list-style-type: disc;
+    padding-left: 52px;
+}
+
+.components li {
+    color: var(--branco);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 49px;
+}
+
+/* Documentation Block */
+.documentation h1 {
+    margin-bottom: 85px;
+}
+
+/* Team & Instructors */
+.team,
+.instructors {
+    display: flex;
+    flex-direction: column;
+}
+
+.team h1 {
+    margin-bottom: 90px;
+}
+
+.instructors h1 {
+    margin-bottom: 130px;
+}
+
+.person-card {
+    display: flex;
+    align-items: center;
+    gap: 59px;
+    margin-bottom: 19px;
+}
+
+.person-card:last-child {
+    margin-bottom: 0;
+}
+
+.team .person-card {
+    margin-left: -47px;
+}
+
+.instructors .person-card {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin-left: -41px;
+    margin-right: -52px;
+}
+
+.person-card img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 1px solid var(--borda-card);
+    flex-shrink: 0;
+}
+
+.person-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.person-info h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 49px;
+    color: var(--branco);
+}
+
+/* ================= FOOTER SECTION ================= */
+.footer-section {
+    width: 100%;
+    padding: 356px 20px 86px 20px;
+    background: linear-gradient(to bottom, #726F94 0%, var(--azul-escuro) 100%);
+}
+
+footer {
+    width: 100%;
+    max-width: 1156px;
+    height: 790px;
+    margin: 0 auto;
+    background-color: var(--cinza-footer);
+    border-radius: 30px;
+    padding: 60px 82px;
+}
+
+.footer-logo-placeholder {
+    width: 273px;
+    height: 92px;
+    background-color: var(--cinza-footer-box);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1100px) {
+    .hero-section h1,
+    .content-section .section-main-title,
+    .content-container h1 {
+        font-size: 48px;
+        line-height: 1.15;
+        margin-left: 40px;
+    }
+
+    .content-container h1 {
+        margin-left: 0;
+    }
+
+    .hero-section h2 {
+        margin-left: 40px;
+        font-size: 24px;
+    }
+
+    .hero-section h3 {
+        margin-left: 40px;
+        font-size: 38px;
+    }
+
+    .content-container {
+        padding: 80px 40px;
+        gap: 100px;
+    }
+
+    .content-container p,
+    .components li,
+    .person-info h2 {
+        font-size: 26px;
+        line-height: 1.4;
+    }
+
+    .team .person-card,
+    .instructors .person-card {
+        margin-left: 0;
+        margin-right: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        margin-bottom: 48px;
+    }
+}
