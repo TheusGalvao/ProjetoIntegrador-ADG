@@ -7,129 +7,481 @@
     <title>Projeto Integrador - Engenharia de Computação & Arduino</title>
 </head>
 <body>
-    <header>
-        <img src="img/menu-icon.svg" alt="Menu" class="menu-icon">
-        <div class="header-logo"></div>
+    <!-- NAVBAR FIXA -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-brand" aria-label="Início">
+                <img src="img/logo.png" alt="Logo ADG" class="logo">
+            </a>
+
+            <nav class="navbar-links" aria-label="Navegação Principal">
+                <a href="#simulacao">Simulação</a>
+                <a href="#funcionamento">Funcionamento</a>
+                <a href="#componentes">Componentes</a>
+                <a href="#equipe">Equipe</a>
+            </nav>
+
+            <a href="unificado.html" class="navbar-cta">Simulador</a>
+        </div>
     </header>
 
+    <!-- 1. HERO SECTION  -->
     <section class="hero-section">
-        <div class="hero-inner">
-            <h1>engenharia de computação <br>&amp; inovação <br>&amp; ldr <br>&amp; arduino</h1>
-            <h2>“Criatividade é apenas conectar as coisas.”</h2>
-            <h3>- Steve Jobs</h3>
-            <button>Conheça!</button>
+        <div class="hero-content">
+            <div class="hero-badges">
+                <span class="badge">Engenharia de Computação</span>
+                <span class="badge">Inovação</span>
+                <span class="badge">Sensor LDR</span>
+                <span class="badge">Arduino</span>
+            </div>
+
+            <h1>Sistema Integrado de Sensoriamento de Luz com ESP32</h1>
+
+            <blockquote class="hero-quote">
+                <p>“Criatividade é apenas conectar as coisas.”</p>
+                <cite>— Steve Jobs</cite>
+            </blockquote>
+
+            <div class="hero-actions">
+                <a href="#simulacao" class="btn-primary">
+                    <span>Explorar o Circuito</span>
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+            </div>
         </div>
+
         <img src="img/ldr.png" alt="Sensor LDR" class="hero-img-ldr">
         <img src="img/arduino.png" alt="Placa Arduino" class="hero-img-arduino">
     </section>
 
+    <!--  CONTEÚDO PRINCIPAL  -->
     <section class="content-section">
         <div class="content-header-wrap">
-            <h1 class="section-main-title">Um projeto <br>de infinitas possibilidades!</h1>
+            <span class="section-eyebrow">Visão Geral do Projeto</span>
+            <h2 class="section-main-title">Um projeto de<br>infinitas possibilidades!</h2>
         </div>
+
         <div class="content-container">
-            <div class="simulation">
-                <h1>Simulação imersiva</h1>
-                <p>Este protótipo representa muito mais do que um simples aprendizado em aula, mas um exemplo real de que a eletrônica junto da computação pode nos render ótimas e inovadoras invenções que solucionaram em muito os problemas de milhares de empresas, comércios e até residências...</p>
-                <img src="img/simulacao.png" alt="Simulação imersiva com placas Arduino">
-                <button>Faça a Simulação</button>
-            </div>
 
-            <div class="project-objectives">
-                <h1>Objetivos do Projeto</h1>
-                <p>O projeto tem como objetivo informar e educar acerca das tantas prossibilidades que o componente LDR</p>
-            </div>
+            <!-- 2. SEÇÃO: SIMULAÇÃO IMERSIVA -->
+            <section id="simulacao" class="section-block simulation-section">
+                <div class="simulation-grid">
+                    <div class="simulation-text">
+                        <span class="block-tag">Ambiente Interativo</span>
+                        <h2>Simulação Imersiva</h2>
+                        <p>
+                            Este protótipo representa muito mais do que um simples aprendizado em aula, mas um exemplo real de que a eletrônica junto da computação pode nos render ótimas e inovadoras invenções que solucionaram em muito os problemas de milhares de empresas, comércios e até residências.
+                        </p>
+                        <a href="unificado.html" class="btn-simulation">
+                            <span>Faça a Simulação</span>
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                        </a>
+                    </div>
 
-            <div class="how-it-works">
-                <h1>Como Funciona</h1>
-                <p>Tudo funciona de um jeito bem simples e intuitivo! Um sensor de luz (chamado LDR) mede a iluminação do ambiente e envia essa informação diretamente para o Arduino, que funciona como o "cérebro" do circuito.
-Ao receber os dados, o Arduino acende luzes LED de diferentes cores (branca, vermelha, laranja e verde) para indicar visualmente o nível de luz no momento. Além disso, ele transmite essas informações para o nosso site, onde os dados ficam visíveis em tempo real.</p>
-            </div>
-
-            <div class="components">
-                <h1>Componentes</h1>
-                <ul>
-                    <li>Um Arduíno Mega Wifi com CH-340;</li>
-                    <li>ESP8266;</li>
-                    <li>Atmega2560;</li>
-                    <li>LDR;</li>
-                    <li>Resistores de 330 Ohms;</li>
-                    <li>4 Leds de 5mm;</li>
-                    <li>Placa de Bateria;</li>
-                    <li>Jumper / Fio;</li>
-                    <li>Protoboard;</li>
-                    <li>Botões.</li>
-                </ul>
-            </div>
-
-            <div class="tests">
-                <h1>Testes</h1>
-                <p>Para garantir que tudo funcionaria perfeitamente, o processo foi dividido em três etapas:
-Simulação virtual: Primeiro, testamos e validamos todo o circuito na plataforma digital Tinkercad.
-Montagem e testes físicos: Em seguida, montamos a estrutura física com os componentes reais e testamos a resposta do sensor na prática.
-Integração final: Por fim, conectamos o sistema físico ao site para confirmar que as informações estavam sendo exibidas corretamente.</p>
-            </div>
-
-            <div class="documentation">
-                <h1>Link para a <br>documentação <br>oficial</h1>
-                <button>Documentação</button>
-            </div>
-
-            <div class="team">
-                <h1>Equipe</h1>
-                <div class="person-card">
-                    <img src="img/simulacao.png" alt="Matheus Souza Galvão">
-                    <div class="person-info">
-                        <h2>Matheus Souza Galvão</h2>
-                        <h2>GU3082938</h2>
+                    <div class="simulation-media-card">
+                        <!-- Container pronto para imagem ou vídeo mudo sem controles (autoplay loop muted playsinline) -->
+                        <img src="img/simulacao.png" alt="Simulação imersiva com placas Arduino">
                     </div>
                 </div>
-                <div class="person-card">
-                    <img src="img/simulacao.png" alt="Giovani">
-                    <div class="person-info">
-                        <h2>Giovani</h2>
-                        <h2>GU</h2>
-                    </div>
-                </div>
-                <div class="person-card">
-                    <img src="img/simulacao.png" alt="Matheus Souza Galvão">
-                    <div class="person-info">
-                        <h2>Matheus Souza Galvão</h2>
-                        <h2>GU</h2>
-                    </div>
-                </div>
-            </div>
+            </section>
 
-            <div class="instructors">
-                <h1>Professores</h1>
-                <div class="person-card">
-                    <img src="img/simulacao.png" alt="Jordy">
-                    <div class="person-info">
-                        <h2>Jordy</h2>
-                        <h2>Curso: Circuitos Elétricos</h2>
+            <!-- 3. SEÇÃO: OBJETIVOS E COMO FUNCIONA -->
+            <section id="funcionamento" class="section-block workings-section">
+                <!-- Objetivos do Projeto -->
+                <div class="objectives-card glass-card">
+                    <div class="objectives-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"/>
+                            <circle cx="12" cy="12" r="6"/>
+                            <circle cx="12" cy="12" r="2"/>
+                        </svg>
+                    </div>
+                    <div class="objectives-content">
+                        <span class="block-tag">Propósito Acadêmico</span>
+                        <h2>Objetivos do Projeto</h2>
+                        <p>
+                            O projeto tem como objetivo informar e educar acerca das tantas possibilidades que o componente LDR oferece quando integrado à microcontroladores modernos, demonstrando na prática a convergência entre hardware de sensoriamento e aplicações web.
+                        </p>
                     </div>
                 </div>
-                <div class="person-card">
-                    <img src="img/simulacao.png" alt="Capelas">
-                    <div class="person-info">
-                        <h2>Capelas</h2>
-                        <h2>Curso: Elétrica 2</h2>
+
+                <!-- Como Funciona (Passos 1, 2, 3 em Cards Horizontais) -->
+                <div class="how-it-works">
+                    <div class="section-heading-group">
+                        <span class="block-tag">Arquitetura e Fluxo</span>
+                        <h2>Como Funciona</h2>
+                        <p class="section-subtitle">Tudo funciona de um jeito simples e intuitivo em três etapas conectadas:</p>
+                    </div>
+
+                    <div class="steps-list">
+                        <div class="step-card glass-card">
+                            <div class="step-number">01</div>
+                            <div class="step-body">
+                                <h3>Captação de Luminosidade (Sensor LDR)</h3>
+                                <p>Um sensor de luz (chamado LDR) mede continuamente a iluminação do ambiente e envia essa informação analógica diretamente para o Arduino, que funciona como o "cérebro" do circuito.</p>
+                            </div>
+                        </div>
+
+                        <div class="step-card glass-card">
+                            <div class="step-number">02</div>
+                            <div class="step-body">
+                                <h3>Processamento e Resposta Visual (LEDs)</h3>
+                                <p>Ao receber os dados, o Arduino processa a leitura e acende luzes LED de diferentes cores (branca, vermelha, laranja e verde) para indicar visualmente o nível de luz no momento.</p>
+                            </div>
+                        </div>
+
+                        <div class="step-card glass-card">
+                            <div class="step-number">03</div>
+                            <div class="step-body">
+                                <h3>Telemetria e Exibição em Tempo Real</h3>
+                                <p>Além da sinalização física, o sistema transmite essas informações diretamente para o nosso site, onde os dados ficam visíveis e acessíveis em tempo real.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="person-card">
-                    <img src="img/simulacao.png" alt="Lucineide">
-                    <div class="person-info">
-                        <h2>Lucineide</h2>
-                        <h2>Curso: Front-end</h2>
+            </section>
+
+            <!-- 4. SEÇÃO: COMPONENTES E TESTES -->
+            <section id="componentes" class="section-block hardware-section">
+                <!-- Grid de Componentes -->
+                <div class="components-block">
+                    <div class="section-heading-group">
+                        <span class="block-tag">Especificações Físicas</span>
+                        <h2>Componentes</h2>
+                        <p class="section-subtitle">Hardware utilizado na construção e validação do protótipo:</p>
+                    </div>
+
+                    <div class="components-grid">
+                        <div class="component-card glass-card">
+                            <span class="component-check" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                            </span>
+                            <span class="component-name">Um Arduíno Mega Wifi com CH-340</span>
+                        </div>
+
+                        <div class="component-card glass-card">
+                            <span class="component-check" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                            </span>
+                            <span class="component-name">Módulo ESP8266</span>
+                        </div>
+
+                        <div class="component-card glass-card">
+                            <span class="component-check" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/></svg>
+                            </span>
+                            <span class="component-name">Microcontrolador Atmega2560</span>
+                        </div>
+
+                        <div class="component-card glass-card">
+                            <span class="component-check" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
+                            </span>
+                            <span class="component-name">Sensor de Luz LDR</span>
+                        </div>
+
+                        <div class="component-card glass-card">
+                            <span class="component-check" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                            </span>
+                            <span class="component-name">Resistores de 330 Ohms</span>
+                        </div>
+
+                        <div class="component-card glass-card">
+                            <span class="component-check" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>
+                            </span>
+                            <span class="component-name">4 LEDs de 5mm</span>
+                        </div>
+
+                        <div class="component-card glass-card">
+                            <span class="component-check" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg>
+                            </span>
+                            <span class="component-name">Placa de Bateria</span>
+                        </div>
+
+                        <div class="component-card glass-card">
+                            <span class="component-check" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                            </span>
+                            <span class="component-name">Jumper / Fio</span>
+                        </div>
+
+                        <div class="component-card glass-card">
+                            <span class="component-check" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+                            </span>
+                            <span class="component-name">Protoboard</span>
+                        </div>
+
+                        <div class="component-card glass-card">
+                            <span class="component-check" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+                            </span>
+                            <span class="component-name">Botões</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+
+                <!-- Testes em Formato de Timeline / Sequência -->
+                <div class="tests-block">
+                    <div class="section-heading-group">
+                        <span class="block-tag">Metodologia de Validação</span>
+                        <h2>Testes</h2>
+                        <p class="section-subtitle">Para garantir que tudo funcionaria perfeitamente, o processo foi dividido em três etapas:</p>
+                    </div>
+
+                    <div class="timeline-grid">
+                        <div class="timeline-card glass-card">
+                            <div class="timeline-header">
+                                <span class="timeline-step">Etapa 01</span>
+                                <span class="timeline-line" aria-hidden="true"></span>
+                            </div>
+                            <h3>Simulação Virtual</h3>
+                            <p>Primeiro, testamos e validamos todo o circuito na plataforma digital Tinkercad.</p>
+                        </div>
+
+                        <div class="timeline-card glass-card">
+                            <div class="timeline-header">
+                                <span class="timeline-step">Etapa 02</span>
+                                <span class="timeline-line" aria-hidden="true"></span>
+                            </div>
+                            <h3>Montagem e Testes Físicos</h3>
+                            <p>Em seguida, montamos a estrutura física com os componentes reais e testamos a resposta do sensor na prática.</p>
+                        </div>
+
+                        <div class="timeline-card glass-card">
+                            <div class="timeline-header">
+                                <span class="timeline-step">Etapa 03</span>
+                                <span class="timeline-line" aria-hidden="true"></span>
+                            </div>
+                            <h3>Integração Final</h3>
+                            <p>Por fim, conectamos o sistema físico ao site para confirmar que as informações estavam sendo exibidas corretamente.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Documentação Oficial Callout -->
+                <div class="documentation-card glass-card">
+                    <div class="documentation-text">
+                        <span class="block-tag">Relatório Técnico</span>
+                        <h2>Link para a Documentação Oficial</h2>
+                        <p>Consulte os esquemáticos completos, código-fonte embarcado e detalhamento teórico do projeto.</p>
+                    </div>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="btn-outline">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                        </svg>
+                        <span>Documentação</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- 5. SEÇÃO: EQUIPE E PROFESSORES -->
+            <section id="equipe" class="section-block team-section">
+                <div class="team-block">
+                    <div class="section-heading-group">
+                        <span class="block-tag">Autores do Projeto</span>
+                        <h2>Equipe</h2>
+                        <p class="section-subtitle">Estudantes de Engenharia de Computação responsáveis pelo desenvolvimento:</p>
+                    </div>
+
+                    <div class="profile-grid">
+                        <!-- Matheus -->
+                        <article class="profile-card glass-card">
+                            <div class="profile-avatar-wrap">
+                                <img src="img/matheus.jpg" alt="Foto de Matheus Souza Galvão" class="profile-avatar">
+                            </div>
+                            <h3 class="profile-name">Matheus Souza Galvão</h3>
+                            <span class="profile-gu">GU3082938</span>
+                            <div class="profile-socials">
+                                <a href="https://www.linkedin.com/in/matheussouzagalvao/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Matheus Souza Galvão" class="profile-social-link">
+                                    <img src="img/linkedin-svgrepo-com.svg" alt="LinkedIn">
+                                </a>
+                                <a href="https://github.com/TheusGalvao" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Matheus Souza Galvão" class="profile-social-link">
+                                    <img src="img/github-svgrepo-com.svg" alt="GitHub">
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- Giovani -->
+                        <article class="profile-card glass-card">
+                            <div class="profile-avatar-wrap">
+                                <img src="img/giovani.jpeg" alt="Foto de Giovani Santana Dias" class="profile-avatar">
+                            </div>
+                            <h3 class="profile-name">Giovani Santana Dias</h3>
+                            <span class="profile-gu">GU3082946</span>
+                            <div class="profile-socials">
+                                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Giovani Santana Dias" class="profile-social-link">
+                                    <img src="img/linkedin-svgrepo-com.svg" alt="LinkedIn">
+                                </a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Giovani Santana Dias" class="profile-social-link">
+                                    <img src="img/github-svgrepo-com.svg" alt="GitHub">
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- Guilherme -->
+                        <article class="profile-card glass-card">
+                            <div class="profile-avatar-wrap">
+                                <img src="img/simulacao.png" alt="Foto de Guilherme Affonso" class="profile-avatar">
+                            </div>
+                            <h3 class="profile-name">Guilherme Affonso</h3>
+                            <span class="profile-gu">GU3079805</span>
+                            <div class="profile-socials">
+                                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Guilherme Affonso" class="profile-social-link">
+                                    <img src="img/linkedin-svgrepo-com.svg" alt="LinkedIn">
+                                </a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Guilherme Affonso" class="profile-social-link">
+                                    <img src="img/github-svgrepo-com.svg" alt="GitHub">
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Subseção: Professores Orientadores -->
+                <div class="instructors-block">
+                    <div class="section-heading-group">
+                        <span class="block-tag">Orientação Docente</span>
+                        <h3>Professores</h3>
+                    </div>
+
+                    <div class="instructors-grid">
+                        <div class="instructor-card glass-card">
+                            <img src="img/simulacao.png" alt="Professor Jordy" class="instructor-avatar">
+                            <div class="instructor-info">
+                                <h4>Jordy</h4>
+                                <p>Curso: Circuitos Elétricos</p>
+                            </div>
+                        </div>
+
+                        <div class="instructor-card glass-card">
+                            <img src="img/simulacao.png" alt="Professor Capelas" class="instructor-avatar">
+                            <div class="instructor-info">
+                                <h4>Capelas</h4>
+                                <p>Curso: Elétrica 2</p>
+                            </div>
+                        </div>
+
+                        <div class="instructor-card glass-card">
+                            <img src="img/simulacao.png" alt="Professora Lucineide" class="instructor-avatar">
+                            <div class="instructor-info">
+                                <h4>Lucineide</h4>
+                                <p>Curso: Front-end</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </div>
     </section>
 
+    <!--  FOOTER SECTION  -->
     <section class="footer-section">
-        <footer>
-            <div class="footer-logo-placeholder"></div>
+        <footer class="site-footer">
+            <div class="footer-grid">
+                <!-- Coluna 1: Contexto Institucional -->
+                <div class="footer-col footer-brand">
+                    <img src="img/logo.png" alt="Logo do Projeto" class="footer-logo">
+                    <p class="footer-description">
+                        Projeto desenvolvido para o curso de Bacharelado em Engenharia de Computação do IFSP – Campus Guarulhos. Explorando a eletrônica e a computação através de simulações imersivas.
+                    </p>
+                </div>
+
+                <!-- Coluna 2: Recursos Técnicos -->
+                <div class="footer-col footer-links-col">
+                    <h3 class="footer-heading">Acesso Técnico</h3>
+                    <ul class="footer-nav-list">
+                        <li>
+                            <a href="https://github.com/TheusGalvao/ProjetoIntegrador-ADG" target="_blank" rel="noopener noreferrer" class="footer-nav-link">
+                                <img src="img/github-svgrepo-com.svg" alt="GitHub" class="footer-icon">
+                                <span>Repositório do Código</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="unificado.html" class="footer-nav-link">
+                                <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                                <span>Ir para o Simulador</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="footer-nav-link">
+                                <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                    <line x1="16" y1="13" x2="8" y2="13"/>
+                                    <line x1="16" y1="17" x2="8" y2="17"/>
+                                    <line x1="10" y1="9" x2="8" y2="9"/>
+                                </svg>
+                                <span>Acessar documentação (PDF)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 3: Equipe e Networking -->
+                <div class="footer-col footer-team-col">
+                    <h3 class="footer-heading">Desenvolvido por:</h3>
+                    <ul class="footer-team-list">
+                        <li class="footer-team-member">
+                            <span class="member-name">Matheus Souza Galvão</span>
+                            <div class="member-socials">
+                                <a href="https://www.linkedin.com/in/matheussouzagalvao/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Matheus Souza Galvão" class="social-btn">
+                                    <img src="img/linkedin-svgrepo-com.svg" alt="LinkedIn">
+                                </a>
+                                <a href="https://github.com/TheusGalvao" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Matheus Souza Galvão" class="social-btn">
+                                    <img src="img/github-svgrepo-com.svg" alt="GitHub">
+                                </a>
+                            </div>
+                        </li>
+                        <li class="footer-team-member">
+                            <span class="member-name">Giovani Santana Dias</span>
+                            <div class="member-socials">
+                                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Giovani Santana Dias" class="social-btn">
+                                    <img src="img/linkedin-svgrepo-com.svg" alt="LinkedIn">
+                                </a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Giovani Santana Dias" class="social-btn">
+                                    <img src="img/github-svgrepo-com.svg" alt="GitHub">
+                                </a>
+                            </div>
+                        </li>
+                        <li class="footer-team-member">
+                            <span class="member-name">Guilherme Correia de Alencar Affonso</span>
+                            <div class="member-socials">
+                                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Guilherme Correia de Alencar Affonso" class="social-btn">
+                                    <img src="img/linkedin-svgrepo-com.svg" alt="LinkedIn">
+                                </a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Guilherme Correia de Alencar Affonso" class="social-btn">
+                                    <img src="img/github-svgrepo-com.svg" alt="GitHub">
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Barra Inferior (Bottom Bar) -->
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2026. Desenvolvido para fins educacionais e de pesquisa.</p>
+                <p class="footer-ack">Agradecimento especial ao professores orientadores Jordy, Lucineide e Capelas.</p>
+            </div>
         </footer>
     </section>
 </body>

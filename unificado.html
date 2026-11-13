@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador Interativo LDR + Laser | Projeto Integrador</title>
+  <link rel="stylesheet" href="unificado.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR FIXA (Mesmo padrão da index.html) -->
+  <header class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-brand" aria-label="Voltar ao Início">
+        <img src="img/logo.png" alt="Logo ADG" class="logo">
+      </a>
+
+      <nav class="navbar-links" aria-label="Navegação Principal">
+        <a href="index.html">← Página Inicial</a>
+        <a href="#div-game">Modo Game</a>
+        <a href="#div-calibrador">Calibrador</a>
+        <a href="#div-dashboard">Dashboard</a>
+      </nav>
+
+      <button type="button" class="navbar-cta" onclick="destacarControleVirtual()">
+        Controle Virtual (0–100%)
+      </button>
+    </div>
+  </header>
+
+  <!-- SEÇÃO PRINCIPAL DO SIMULADOR -->
+  <main class="simulator-page">
+    <div id="simulador" class="main-wrapper">
+
+      <!-- CABEÇALHO E APRESENTAÇÃO DO MODO DE DEMONSTRAÇÃO -->
+      <section id="demo-intro-banner" class="demo-intro-box glass-card">
+        <div class="demo-intro-top">
+          <div class="demo-badges">
+            <span class="block-tag">Demonstração Interativa</span>
+            <span class="status-pill" id="demo-mode-status">Modo atual: Simulação Virtual Ativa (Sem USB)</span>
+          </div>
+          <h1>Ambiente de Telemetria USB &amp; Simulação Virtual LDR</h1>
+          <p class="demo-intro-text">
+            Esta é a página de demonstração do nosso <strong>protótipo físico (Arduino Mega WiFi + Sensor LDR + Laser)</strong> conectado via porta <strong>USB (Web Serial)</strong>. Como você está acompanhando a apresentação sem o protótipo físico conectado ao seu dispositivo, desenvolvemos um <strong>Controle Virtual de Iluminação (0% a 100%)</strong> fixado no canto inferior direito da tela. Regule a iluminação ambiente simulada e acompanhe o <strong>Modo Game</strong>, o <strong>Calibrador</strong> e o <strong>Dashboard</strong> transmitirem os dados em tempo real.
+          </p>
+        </div>
+
+        <div class="demo-intro-actions">
+          <button type="button" class="btn btn-primary" onclick="destacarControleVirtual()">
+            Regular Iluminação Virtual (0 a 100%)
+          </button>
+          <a href="index.html" class="btn btn-secondary">
+            Voltar para Apresentação do Projeto
+          </a>
+        </div>
+      </section>
+
+      <!-- MÓDULO 1: MODO GAME -->
+      <section id="div-game" class="modulo-box glass-card">
+        <div class="modulo-header" onclick="toggleModulo('game')">
+          <div class="modulo-header-title">
+            <span class="block-tag">Módulo 01 &bull; Visualização</span>
+            <h3>Modo Game (Cenário Dia/Noite &amp; Arcade)</h3>
+          </div>
+          <button class="btn-collapse" type="button" aria-label="Recolher/Expandir">
+            <span id="collapse-icon-game" class="collapse-arrow">▼</span>
+          </button>
+        </div>
+
+        <div id="content-game" class="modulo-body">
+          <div id="game-viewport" class="game-viewport night">
+            <!-- Fundo: Céu, Sol/Lua e Estrelas -->
+            <div class="sky">
+              <div id="celestial-body" class="celestial-body"></div>
+              <div id="stars" class="stars"></div>
+            </div>
+
+            <!-- Cenário do Jogo -->
+            <div class="scene">
+              <div class="room">
+                <!-- Estação de Trabalho (Dia: >= 50% da luz calibrada) -->
+                <div id="station-work" class="station hidden">
+                  <div class="emoji-large desk">💻</div>
+                  <div class="emoji-large person working">👨‍💻</div>
+                  <div class="sweat">💦</div>
+                </div>
+
+                <!-- Cama (Noite: < 50% da luz calibrada) -->
+                <div id="station-sleep" class="station">
+                  <div class="emoji-large bed">🛌</div>
+                  <div class="zzz">Zzz...</div>
+                </div>
+              </div>
+              <div class="ground"></div>
+            </div>
+          </div>
+
+          <!-- Painel Inferior do Game -->
+          <div class="game-ui-panel">
+            <div class="ui-controls">
+              <button id="game-btn-conectar" class="btn btn-primary" onclick="toggleSerial()">Conectar USB (Serial)</button>
+              <div id="game-status-text" class="game-status-text">SLEEPING...</div>
+            </div>
+
+            <div class="game-ui-stats">
+              <div class="game-stats-header">
+                <span class="game-stats-label">Luminosidade Capturada: <strong id="game-val-porcentagem">0%</strong></span>
+                <span class="game-adc-label">ADC: <strong id="game-val-adc">0</strong> / MÁX: <strong id="game-val-max">240</strong></span>
+              </div>
+              <div class="game-progress-container">
+                <div id="game-progress-bar" class="game-progress-bar"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LINHA DOS MÓDULOS: CALIBRADOR + DASHBOARD -->
+      <div id="modules-row" class="modules-row">
+
+        <!-- MÓDULO 2: CALIBRADOR -->
+        <section id="div-calibrador" class="modulo-box glass-card">
+          <div class="modulo-header" onclick="toggleModulo('calibrador')">
+            <div class="modulo-header-title">
+              <span class="block-tag">Módulo 02 &bull; Hardware</span>
+              <h3>Calibrador LDR + Laser</h3>
+            </div>
+            <button class="btn-collapse" type="button" aria-label="Recolher/Expandir">
+              <span id="collapse-icon-calibrador" class="collapse-arrow">▼</span>
+            </button>
+          </div>
+
+          <div id="content-calibrador" class="modulo-body">
+            <!-- Barra de Conexão USB Serial -->
+            <div class="cal-serial-bar">
+              <div class="cal-serial-status">
+                <span class="dot" id="cal-dot-status"></span>
+                <span id="cal-txt-status">Simulação Virtual Ativa</span>
+              </div>
+              <button id="cal-btn-serial" class="btn btn-primary" onclick="toggleSerial()">Conectar USB</button>
+            </div>
+
+            <!-- Leituras Principais do Calibrador -->
+            <div class="cal-stats">
+              <div class="cal-stat-box">
+                <span class="cal-stat-label">Luz Atual (LDR A8)</span>
+                <span class="cal-stat-val" id="cal-ldr">0</span>
+              </div>
+              <div class="cal-stat-box">
+                <span class="cal-stat-label">Máximo Calibrado</span>
+                <span class="cal-stat-val" id="cal-max">240</span>
+              </div>
+            </div>
+
+            <!-- Barra de Porcentagem Calibrada -->
+            <div class="cal-bar-wrap">
+              <div class="cal-bar-fill" id="cal-bar"></div>
+              <div class="cal-bar-text" id="cal-pct">0%</div>
+            </div>
+
+            <!-- 4 LEDs Físicos Espelhados na Tela -->
+            <div class="cal-leds-title">
+              <span>LEDs do Arduino Mega</span>
+              <span id="cal-leds-count">0 / 4 acesos</span>
+            </div>
+            <div class="cal-leds">
+              <div class="led-item">
+                <div class="led" id="led1" title="1º LED - Pino 26"></div>
+                <span>Pino 26</span>
+              </div>
+              <div class="led-item">
+                <div class="led" id="led2" title="2º LED - Pino 28"></div>
+                <span>Pino 28</span>
+              </div>
+              <div class="led-item">
+                <div class="led" id="led3" title="3º LED - Pino 24"></div>
+                <span>Pino 24</span>
+              </div>
+              <div class="led-item">
+                <div class="led" id="led4" title="4º LED - Pino 22"></div>
+                <span>Pino 22</span>
+              </div>
+            </div>
+
+            <!-- Controles de Ajuste de Calibração -->
+            <div class="cal-btn-grid">
+              <button class="cal-btn" onclick="cmd('LEFT')" title="Diminuir limite em 20">-20</button>
+              <button class="cal-btn" onclick="cmd('DOWN')" title="Diminuir limite em 5">-5</button>
+              <button class="cal-btn" onclick="cmd('UP')" title="Aumentar limite em 5">+5</button>
+              <button class="cal-btn" onclick="cmd('RIGHT')" title="Aumentar limite em 20">+20</button>
+            </div>
+
+            <button class="cal-btn cal-btn-auto" onclick="cmd('AUTO')">Auto-Calibrar Agora (Luz Atual)</button>
+
+            <div class="cal-custom-set">
+              <input type="number" id="novoMax" class="cal-input" placeholder="Novo máx (10 a 1023)" min="10" max="1023">
+              <button class="cal-btn cal-btn-apply" onclick="definirMax()">Definir Máx</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- MÓDULO 3: DASHBOARD E MONITOR DE LUMINOSIDADE -->
+        <section id="div-dashboard" class="modulo-box glass-card">
+          <div class="modulo-header" onclick="toggleModulo('dashboard')">
+            <div class="modulo-header-title">
+              <span class="block-tag">Módulo 03 &bull; Telemetria</span>
+              <h3>Monitor de Luminosidade &amp; Histórico</h3>
+            </div>
+            <button class="btn-collapse" type="button" aria-label="Recolher/Expandir">
+              <span id="collapse-icon-dashboard" class="collapse-arrow">▼</span>
+            </button>
+          </div>
+
+          <div id="content-dashboard" class="modulo-body">
+            <div class="dash-header">
+              <p class="dash-subtitle">Projeto Integrador &bull; Arduino Mega WiFi (Pino Analógico A8)</p>
+              <div id="dash-theme-indicator" class="theme-indicator-box" onclick="alternarTemaManual()" title="Clique para alternar o tema manualmente">
+                <span id="dash-theme-icon">🌙</span>
+                <span id="dash-theme-text">Tema: Escuro</span>
+              </div>
+            </div>
+
+            <!-- Controles de Conexão Sincronizados -->
+            <div class="dash-controls">
+              <div class="cal-serial-status">
+                <span id="dash-status-dot" class="dot"></span>
+                <span id="dash-status-text">Transmitindo via Simulador Virtual</span>
+              </div>
+
+              <div class="dash-buttons">
+                <button id="dash-btn-conectar" class="btn btn-primary" onclick="conectarSerial()">Conectar Arduino</button>
+                <button id="dash-btn-desconectar" class="btn btn-danger" onclick="desconectarSerial()" disabled>Desconectar</button>
+              </div>
+            </div>
+
+            <!-- Painel de Métricas -->
+            <div class="dash-metrics-grid">
+              <div class="dash-metric-card">
+                <h4>Leitura Analógica (ADC)</h4>
+                <div class="dash-metric-value">
+                  <span id="dash-val-adc">0</span>
+                  <span class="dash-metric-unit">/ <span id="dash-val-max">240</span></span>
+                </div>
+              </div>
+
+              <div class="dash-metric-card">
+                <h4>Luminosidade Calibrada</h4>
+                <div class="dash-metric-value">
+                  <span id="dash-val-porcentagem">0</span>
+                  <span class="dash-metric-unit">%</span>
+                </div>
+              </div>
+
+              <div class="dash-metric-card">
+                <h4>Condição de Luz</h4>
+                <div class="dash-metric-value dash-status-badge" id="dash-val-condicao">Escuro</div>
+              </div>
+            </div>
+
+            <!-- Barra de Nível de Iluminação -->
+            <div class="dash-progress-section">
+              <div class="dash-progress-header">
+                <h4>Nível de Iluminação Sincronizado</h4>
+              </div>
+              <div class="dash-progress-container">
+                <div id="dash-progress-bar" class="dash-progress-bar"></div>
+              </div>
+            </div>
+
+            <!-- Histórico de Leituras -->
+            <div class="dash-history-section">
+              <div class="dash-card-header">
+                <h4>Histórico de Leituras</h4>
+                <div class="dash-buttons">
+                  <button id="dash-btn-registrar" class="btn btn-secondary" onclick="registrarLeituraManual()">Registrar Agora</button>
+                  <button id="dash-btn-limpar" class="btn btn-secondary" onclick="limparHistorico()">Limpar</button>
+                </div>
+              </div>
+              <div class="table-container">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Horário</th>
+                      <th>LDR (A8)</th>
+                      <th>Máx</th>
+                      <th>Luz (%)</th>
+                      <th>LEDs</th>
+                      <th>Estado</th>
+                    </tr>
+                  </thead>
+                  <tbody id="dash-log-tabela">
+                    <tr>
+                      <td colspan="6" class="text-center">Nenhum dado recebido até o momento.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER PADRONIZADO DA LANDING PAGE -->
+  <section class="footer-section">
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <!-- Coluna 1: Contexto Institucional -->
+        <div class="footer-col footer-brand">
+          <img src="img/logo.png" alt="Logo do Projeto" class="footer-logo">
+          <p class="footer-description">
+            Projeto desenvolvido para o curso de Bacharelado em Engenharia de Computação do IFSP – Campus Guarulhos. Explorando a eletrônica e a computação através de simulações imersivas.
+          </p>
+        </div>
+
+        <!-- Coluna 2: Recursos Técnicos -->
+        <div class="footer-col footer-links-col">
+          <h3 class="footer-heading">Acesso Técnico</h3>
+          <ul class="footer-nav-list">
+            <li>
+              <a href="index.html" class="footer-nav-link">
+                <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M19 12H5"/>
+                  <polyline points="12 19 5 12 12 5"/>
+                </svg>
+                <span>Voltar à Página Inicial</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" target="_blank" rel="noopener noreferrer" class="footer-nav-link">
+                <img src="img/github-svgrepo-com.svg" alt="GitHub" class="footer-icon">
+                <span>Repositório do Código</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" target="_blank" rel="noopener noreferrer" class="footer-nav-link">
+                <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="16" y1="13" x2="8" y2="13"/>
+                  <line x1="16" y1="17" x2="8" y2="17"/>
+                  <line x1="10" y1="9" x2="8" y2="9"/>
+                </svg>
+                <span>Acessar documentação (PDF)</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Coluna 3: Equipe e Networking -->
+        <div class="footer-col footer-team-col">
+          <h3 class="footer-heading">Desenvolvido por:</h3>
+          <ul class="footer-team-list">
+            <li class="footer-team-member">
+              <span class="member-name">Matheus Souza Galvão</span>
+              <div class="member-socials">
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Matheus Souza Galvão" class="social-btn">
+                  <img src="img/linkedin-svgrepo-com.svg" alt="LinkedIn">
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Matheus Souza Galvão" class="social-btn">
+                  <img src="img/github-svgrepo-com.svg" alt="GitHub">
+                </a>
+              </div>
+            </li>
+            <li class="footer-team-member">
+              <span class="member-name">Giovani Santana Dias</span>
+              <div class="member-socials">
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Giovani Santana Dias" class="social-btn">
+                  <img src="img/linkedin-svgrepo-com.svg" alt="LinkedIn">
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Giovani Santana Dias" class="social-btn">
+                  <img src="img/github-svgrepo-com.svg" alt="GitHub">
+                </a>
+              </div>
+            </li>
+            <li class="footer-team-member">
+              <span class="member-name">Guilherme Correia de Alencar Affonso</span>
+              <div class="member-socials">
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Guilherme Correia de Alencar Affonso" class="social-btn">
+                  <img src="img/linkedin-svgrepo-com.svg" alt="LinkedIn">
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Guilherme Correia de Alencar Affonso" class="social-btn">
+                  <img src="img/github-svgrepo-com.svg" alt="GitHub">
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Barra Inferior (Bottom Bar) -->
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2026. Desenvolvido para fins educacionais e de pesquisa.</p>
+        <p class="footer-ack">Agradecimento especial ao professores orientadores Jordy, Lucineide e Capelas.</p>
+      </div>
+    </footer>
+  </section>
+
+  <!-- CONTROLE FIXO DE SIMULAÇÃO DE ILUMINAÇÃO (LDR VIRTUAL 0 A 100%) -->
+  <aside id="ldr-virtual-widget" class="ldr-virtual-widget" aria-label="Controle Virtual de Iluminação LDR">
+    <div class="ldr-widget-header">
+      <div class="ldr-widget-title-group">
+        <span class="ldr-widget-dot" id="ldr-widget-dot"></span>
+        <div>
+          <h4>Simulador LDR Virtual</h4>
+          <span class="ldr-widget-sub">Regulagem de Luz Ambiente (0–100%)</span>
+        </div>
+      </div>
+      <button type="button" class="ldr-widget-toggle" onclick="toggleWidgetSimulador()" title="Minimizar/Expandir controle" aria-label="Minimizar ou expandir controle">
+        <span id="ldr-widget-toggle-icon">−</span>
+      </button>
+    </div>
+
+    <div id="ldr-widget-body" class="ldr-widget-body">
+      <div class="ldr-widget-readout">
+        <div class="ldr-readout-main">
+          <span class="ldr-readout-label">Iluminação Simulada</span>
+          <strong class="ldr-readout-pct" id="sim-ldr-pct">0%</strong>
+        </div>
+        <div class="ldr-readout-meta">
+          <span>ADC: <strong id="sim-ldr-adc">0</strong>/<span id="sim-ldr-max">240</span></span>
+          <span>LEDs: <strong id="sim-ldr-leds">0/4</strong></span>
+        </div>
+      </div>
+
+      <div class="ldr-slider-wrap">
+        <span class="ldr-bound-icon" title="Escuro (0%)">🌙 0%</span>
+        <input
+          type="range"
+          id="sim-ldr-slider"
+          class="ldr-range-slider"
+          min="0"
+          max="100"
+          step="1"
+          value="0"
+          oninput="simularIluminacaoLDR(this.value)"
+          onchange="registrarLeituraSimulada()"
+          aria-label="Regular iluminação de 0 a 100 por cento"
+        >
+        <span class="ldr-bound-icon" title="Luz Máxima (100%)">100% ☀️</span>
+      </div>
+
+      <div class="ldr-presets">
+        <button type="button" class="ldr-preset-btn" onclick="definirPresetLDR(0)">0% Escuro</button>
+        <button type="button" class="ldr-preset-btn" onclick="definirPresetLDR(35)">35% Ambiente</button>
+        <button type="button" class="ldr-preset-btn" onclick="definirPresetLDR(75)">75% Claro</button>
+        <button type="button" class="ldr-preset-btn" onclick="definirPresetLDR(100)">100% Máx</button>
+      </div>
+    </div>
+  </aside>
+
+  <script src="unificado.js"></script>
+</body>
+
+</html>
