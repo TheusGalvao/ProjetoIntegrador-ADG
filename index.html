@@ -10,6 +10,10 @@
     <!-- NAVBAR FIXA -->
     <header class="navbar">
         <div class="navbar-container">
+            <button type="button" class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Abrir menu lateral">
+                <img src="img/menu-icon.svg" alt="Menu">
+            </button>
+
             <a href="#" class="navbar-brand" aria-label="Início">
                 <img src="img/logo.png" alt="Logo ADG" class="logo">
             </a>
@@ -24,6 +28,52 @@
             <a href="unificado.html" class="navbar-cta">Simulador</a>
         </div>
     </header>
+
+    <!-- MENU LATERAL MOBILE (Exibido apenas no celular) -->
+    <div id="mobile-sidebar-overlay" class="mobile-sidebar-overlay" onclick="closeMobileMenu()"></div>
+    <aside id="mobile-sidebar" class="mobile-sidebar" aria-label="Menu de Navegação Mobile">
+        <div class="mobile-sidebar-header">
+            <img src="img/logo.png" alt="Logo ADG" class="mobile-sidebar-logo">
+            <button type="button" class="mobile-sidebar-close" onclick="closeMobileMenu()" aria-label="Fechar menu">✕</button>
+        </div>
+
+        <div class="mobile-sidebar-content">
+            <span class="mobile-sidebar-label">Navegação</span>
+            <nav class="mobile-sidebar-nav">
+                <a href="#simulacao" onclick="closeMobileMenu()">Simulação</a>
+                <a href="#funcionamento" onclick="closeMobileMenu()">Funcionamento</a>
+                <a href="#componentes" onclick="closeMobileMenu()">Componentes</a>
+                <a href="#equipe" onclick="closeMobileMenu()">Equipe</a>
+            </nav>
+
+            <div class="mobile-sidebar-divider"></div>
+
+            <span class="mobile-sidebar-label">Acesso &amp; Links</span>
+            <div class="mobile-sidebar-links">
+                <a href="unificado.html" class="mobile-sidebar-cta">
+                    <span>Ir para o Simulador</span>
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="mobile-sidebar-sublink">
+                    <img src="img/github-svgrepo-com.svg" alt="GitHub">
+                    <span>Repositório do Código</span>
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="mobile-sidebar-sublink">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                    </svg>
+                    <span>Documentação Oficial (PDF)</span>
+                </a>
+            </div>
+        </div>
+    </aside>
 
     <!-- 1. HERO SECTION  -->
     <section class="hero-section">
@@ -484,5 +534,24 @@
             </div>
         </footer>
     </section>
+
+    <script>
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('mobile-sidebar');
+            const overlay = document.getElementById('mobile-sidebar-overlay');
+            if (!sidebar || !overlay) return;
+            const isOpen = sidebar.classList.toggle('open');
+            overlay.classList.toggle('open', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        }
+
+        function closeMobileMenu() {
+            const sidebar = document.getElementById('mobile-sidebar');
+            const overlay = document.getElementById('mobile-sidebar-overlay');
+            if (sidebar) sidebar.classList.remove('open');
+            if (overlay) overlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+    </script>
 </body>
 </html>

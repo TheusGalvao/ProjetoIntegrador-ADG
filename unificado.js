@@ -1,3 +1,21 @@
+    // CONTROLE DO MENU LATERAL MOBILE (DRAWER)
+    function toggleMobileMenu() {
+      const sidebar = document.getElementById('mobile-sidebar');
+      const overlay = document.getElementById('mobile-sidebar-overlay');
+      if (!sidebar || !overlay) return;
+      const isOpen = sidebar.classList.toggle('open');
+      overlay.classList.toggle('open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+
+    function closeMobileMenu() {
+      const sidebar = document.getElementById('mobile-sidebar');
+      const overlay = document.getElementById('mobile-sidebar-overlay');
+      if (sidebar) sidebar.classList.remove('open');
+      if (overlay) overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
     // CONTROLE DE VISIBILIDADE / COLAPSO DAS DIVS (ACORDEÃO / TOGGLE)
     const modulosVisiveis = {
       game: true,
@@ -27,13 +45,18 @@
       ajustarGridRow();
     }
 
-    // Se uma das duas divs inferiores estiver recolhida, a outra ocupa 100% da linha
+    // Se uma das duas divs inferiores estiver recolhida (no desktop), a outra ocupa 100% da linha
     function ajustarGridRow() {
       const row = document.getElementById('modules-row');
+      if (!row) return;
+
+      if (window.innerWidth <= 1024) {
+        row.style.gridTemplateColumns = '';
+        return;
+      }
+
       const calAberto = modulosVisiveis.calibrador;
       const dashAberto = modulosVisiveis.dashboard;
-
-      if (!row) return;
 
       if (calAberto && dashAberto) {
         row.style.gridTemplateColumns = '';
