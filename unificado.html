@@ -114,8 +114,8 @@
       <section id="div-game" class="modulo-box glass-card">
         <div class="modulo-header" onclick="toggleModulo('game')">
           <div class="modulo-header-title">
-            <span class="block-tag">Módulo 01 &bull; Visualização</span>
-            <h3>Modo Game (Cenário Dia/Noite &amp; Arcade)</h3>
+            <span class="block-tag">Visualização</span>
+            <h3>Modo Game (Cenário Dia/Noite)</h3>
           </div>
           <button class="btn-collapse" type="button" aria-label="Recolher/Expandir">
             <span id="collapse-icon-game" class="collapse-arrow">▼</span>
@@ -152,11 +152,6 @@
 
           <!-- Painel Inferior do Game -->
           <div class="game-ui-panel">
-            <div class="ui-controls">
-              <button id="game-btn-conectar" class="btn btn-primary" onclick="toggleSerial()">Conectar USB (Serial)</button>
-              <div id="game-status-text" class="game-status-text">SLEEPING...</div>
-            </div>
-
             <div class="game-ui-stats">
               <div class="game-stats-header">
                 <span class="game-stats-label">Luminosidade Capturada: <strong id="game-val-porcentagem">0%</strong></span>
@@ -177,7 +172,7 @@
         <section id="div-calibrador" class="modulo-box glass-card">
           <div class="modulo-header" onclick="toggleModulo('calibrador')">
             <div class="modulo-header-title">
-              <span class="block-tag">Módulo 02 &bull; Hardware</span>
+              <span class="block-tag">Hardware</span>
               <h3>Calibrador LDR + Laser</h3>
             </div>
             <button class="btn-collapse" type="button" aria-label="Recolher/Expandir">
@@ -186,19 +181,11 @@
           </div>
 
           <div id="content-calibrador" class="modulo-body">
-            <!-- Barra de Conexão USB Serial -->
-            <div class="cal-serial-bar">
-              <div class="cal-serial-status">
-                <span class="dot" id="cal-dot-status"></span>
-                <span id="cal-txt-status">Simulação Virtual Ativa</span>
-              </div>
-              <button id="cal-btn-serial" class="btn btn-primary" onclick="toggleSerial()">Conectar USB</button>
-            </div>
 
             <!-- Leituras Principais do Calibrador -->
             <div class="cal-stats">
               <div class="cal-stat-box">
-                <span class="cal-stat-label">Luz Atual (LDR A8)</span>
+                <span class="cal-stat-label">Luz Atual</span>
                 <span class="cal-stat-val" id="cal-ldr">0</span>
               </div>
               <div class="cal-stat-box">
@@ -211,30 +198,6 @@
             <div class="cal-bar-wrap">
               <div class="cal-bar-fill" id="cal-bar"></div>
               <div class="cal-bar-text" id="cal-pct">0%</div>
-            </div>
-
-            <!-- 4 LEDs Físicos Espelhados na Tela -->
-            <div class="cal-leds-title">
-              <span>LEDs do Arduino Mega</span>
-              <span id="cal-leds-count">0 / 4 acesos</span>
-            </div>
-            <div class="cal-leds">
-              <div class="led-item">
-                <div class="led" id="led1" title="1º LED - Pino 26"></div>
-                <span>Pino 26</span>
-              </div>
-              <div class="led-item">
-                <div class="led" id="led2" title="2º LED - Pino 28"></div>
-                <span>Pino 28</span>
-              </div>
-              <div class="led-item">
-                <div class="led" id="led3" title="3º LED - Pino 24"></div>
-                <span>Pino 24</span>
-              </div>
-              <div class="led-item">
-                <div class="led" id="led4" title="4º LED - Pino 22"></div>
-                <span>Pino 22</span>
-              </div>
             </div>
 
             <!-- Controles de Ajuste de Calibração -->
@@ -258,7 +221,7 @@
         <section id="div-dashboard" class="modulo-box glass-card">
           <div class="modulo-header" onclick="toggleModulo('dashboard')">
             <div class="modulo-header-title">
-              <span class="block-tag">Módulo 03 &bull; Telemetria</span>
+              <span class="block-tag">Telemetria</span>
               <h3>Monitor de Luminosidade &amp; Histórico</h3>
             </div>
             <button class="btn-collapse" type="button" aria-label="Recolher/Expandir">
@@ -268,23 +231,9 @@
 
           <div id="content-dashboard" class="modulo-body">
             <div class="dash-header">
-              <p class="dash-subtitle">Projeto Integrador &bull; Arduino Mega WiFi (Pino Analógico A8)</p>
               <div id="dash-theme-indicator" class="theme-indicator-box" onclick="alternarTemaManual()" title="Clique para alternar o tema manualmente">
                 <span id="dash-theme-icon">🌙</span>
                 <span id="dash-theme-text">Tema: Escuro</span>
-              </div>
-            </div>
-
-            <!-- Controles de Conexão Sincronizados -->
-            <div class="dash-controls">
-              <div class="cal-serial-status">
-                <span id="dash-status-dot" class="dot"></span>
-                <span id="dash-status-text">Transmitindo via Simulador Virtual</span>
-              </div>
-
-              <div class="dash-buttons">
-                <button id="dash-btn-conectar" class="btn btn-primary" onclick="conectarSerial()">Conectar Arduino</button>
-                <button id="dash-btn-desconectar" class="btn btn-danger" onclick="desconectarSerial()" disabled>Desconectar</button>
               </div>
             </div>
 
