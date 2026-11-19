@@ -415,7 +415,8 @@
       document.getElementById('cal-max').textContent = max;
       document.getElementById('cal-pct').textContent = pct + '%';
       document.getElementById('cal-bar').style.width = pct + '%';
-      document.getElementById('cal-leds-count').textContent = leds + ' / 4 acesos';
+      const calLedsCount = document.getElementById('cal-leds-count');
+      if (calLedsCount) calLedsCount.textContent = leds + ' / 4 acesos';
 
       for (let i = 1; i <= 4; i++) {
         const el = document.getElementById('led' + i);
@@ -468,21 +469,25 @@
         if (themeIcon) themeIcon.textContent = '☀️';
         if (themeText) themeText.textContent = 'Tema: Claro';
 
-        gameViewport.classList.remove('night');
-        gameViewport.classList.add('day');
-        stationWork.classList.remove('hidden');
-        stationSleep.classList.add('hidden');
-        gameStatusText.textContent = 'WORKING...';
+        if (gameViewport) {
+          gameViewport.classList.remove('night');
+          gameViewport.classList.add('day');
+        }
+        if (stationWork) stationWork.classList.remove('hidden');
+        if (stationSleep) stationSleep.classList.add('hidden');
+        if (gameStatusText) gameStatusText.textContent = 'WORKING...';
       } else {
         document.body.classList.remove('theme-light');
         if (themeIcon) themeIcon.textContent = '🌙';
         if (themeText) themeText.textContent = 'Tema: Escuro';
 
-        gameViewport.classList.remove('day');
-        gameViewport.classList.add('night');
-        stationWork.classList.add('hidden');
-        stationSleep.classList.remove('hidden');
-        gameStatusText.textContent = 'SLEEPING...';
+        if (gameViewport) {
+          gameViewport.classList.remove('day');
+          gameViewport.classList.add('night');
+        }
+        if (stationWork) stationWork.classList.add('hidden');
+        if (stationSleep) stationSleep.classList.remove('hidden');
+        if (gameStatusText) gameStatusText.textContent = 'SLEEPING...';
       }
     }
 
